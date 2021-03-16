@@ -120,7 +120,9 @@ class ConfigNode(anytree.NodeMixin):
                         root = cls(name=part, client=client)
                         base = root
                     else:
-                        if part not in base:
+                        if part == base.name:
+                            continue
+                        elif part not in base:
                             base = cls(name=part, client=client, parent=base)
                         else:
                             base = base[part]
